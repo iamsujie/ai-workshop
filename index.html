@@ -10,10 +10,10 @@
             background-color: #000;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            min-height: 100vh;  /* 改为最小高度 */
             margin: 0;
-            overflow: hidden;
+            padding: 20px;
+            overflow-y: auto;   /* 允许垂直滚动 */
         }
         .poster {
             width: 80%;
@@ -25,9 +25,10 @@
             position: relative;
             z-index: 1;
             color: #d4d4d4;
+            margin: 20px auto;  /* 添加外边距 */
         }
         .background {
-            position: absolute;
+            position: fixed;    /* 改为固定定位 */
             top: 0;
             left: 0;
             width: 100%;
@@ -35,6 +36,7 @@
             background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZXQgdGV4dD0iMSAxIDIgMiIgaWQ9InJldCIgdHJhbnNmb3JtPSJyb3RhdGUoMTA1KSI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJncmVlbiIgc3Ryb2tlLXdpZHRoPSIwLjYiPgogICAgPHBhdGggZD0iTTEgMCAxIDgiLz4KICA8L2c+PC9yZXQ+PC9zdmc+) repeat;
             animation: animateBackground 10s linear infinite;
             mix-blend-mode: overlay;
+            pointer-events: none;  /* 允许点击穿透背景 */
         }
         @keyframes animateBackground {
             to {
