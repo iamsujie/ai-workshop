@@ -113,6 +113,33 @@
             background-color: #00cc00;
             box-shadow: 0 0 10px #0f0;
         }
+        
+        /* 聊天按钮样式 */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #0f0;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            z-index: 1000;
+            font-size: 24px;
+            border: none;
+        }
+        
+        .chat-button:hover {
+            background-color: #00cc00;
+            box-shadow: 0 0 15px #0f0;
+        }
+        
+        /* 移除聊天按钮样式 */
     </style>
 </head>
 <body>
@@ -137,7 +164,32 @@
             <p><span class="highlight">人 员：</span> 对AI编程、Agent搭建感兴趣，想动手尝试的朋友</p>
             <p><span class="highlight">人 数：</span> 希望不超过20人，小范围深度交流</p>
         </div>
-        <a href="https://wj.qq.com/s2/18498574/14e6/" class="btn" target="_blank">[ 点击报名 ]</a>
+        <a href="#" class="btn" id="open-chat">[ 请点击右下角的AI助手报名 ]</a>
     </div>
+    
+    <!-- 删除聊天按钮 -->
+    
+    <!-- Coze聊天SDK -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
+    <script>
+      new CozeWebSDK.WebChatClient({
+        config: {
+          bot_id: '7477556927954763816',
+        },
+        componentProps: {
+          title: 'AI编程工作坊报名助手',
+          welcomeMessage: '你好！欢迎报名AI编程工作坊，请告诉我你的姓名和联系方式，我会帮你完成报名。',
+          position: 'right',
+          triggerSelector: '#open-chat'
+        },
+        auth: {
+          type: 'token',
+          token: 'pat_QkzTtuYIEhBkTfzzY3bahrDmdQTymLpi8atuJ7YceA8lbkYOObFsdiNCrv0TKLnC',
+          onRefreshToken: function () {
+            return 'pat_QkzTtuYIEhBkTfzzY3bahrDmdQTymLpi8atuJ7YceA8lbkYOObFsdiNCrv0TKLnC'
+          }
+        }
+      });
+    </script>
 </body>
 </html>
