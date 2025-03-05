@@ -172,7 +172,6 @@
     <!-- Coze聊天SDK -->
     <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
     <script>
-      // 使用OAuth认证方式
       const cozeWebSDK = new CozeWebSDK.WebChatClient({
         config: {
           bot_id: '7477556927954763816',
@@ -184,9 +183,11 @@
           triggerSelector: '#open-chat'
         },
         auth: {
-          type: 'oauth',
-          clientId: '23178810839044429925072486190842.app.coze', // 需要从Coze开发者平台获取
-          redirectUri: window.location.origin + window.location.pathname, // 当前页面URL作为回调地址
+          type: 'token',
+          token: 'pat_QkzTtuYIEhBkTfzzY3bahrDmdQTymLpi8atuJ7YceA8lbkYOObFsdiNCrv0TKLnC',
+          onRefreshToken: function () {
+            return 'pat_QkzTtuYIEhBkTfzzY3bahrDmdQTymLpi8atuJ7YceA8lbkYOObFsdiNCrv0TKLnC'
+          }
         }
       });
     </script>
