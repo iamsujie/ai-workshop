@@ -164,7 +164,7 @@
             <p><span class="highlight">人 员：</span> 对AI编程、Agent搭建感兴趣，想动手尝试的朋友</p>
             <p><span class="highlight">人 数：</span> 希望不超过20人，小范围深度交流</p>
         </div>
-        <a href="#" class="btn" id="open-chat">[ 请点击右下角的AI助手报名 ]</a>
+        <a href="#" class="btn" id="open-chat">[ 点击右下角的AI助手报名 ]</a>
     </div>
     
     <!-- 删除聊天按钮 -->
@@ -172,9 +172,18 @@
     <!-- Coze聊天SDK -->
     <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.3/libs/cn/index.js"></script>
     <script>
+      // 生成随机会话ID
+      function generateSessionId() {
+        return 'session_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      }
+      
+      // 为每个用户创建唯一的会话ID
+      const sessionId = generateSessionId();
+      
       new CozeWebSDK.WebChatClient({
         config: {
           bot_id: '7477556927954763816',
+          session_id: sessionId, // 添加唯一会话ID
         },
         componentProps: {
           title: 'AI编程工作坊报名助手',
